@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Guess Number</title>
+    </head>
+    <style>
+        body {
+          background-image: url('cat.png');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+        .bgcolor{
+            background-color: white;
+        }
+        .font{
+            font-size:30px;
+        }
+    </style>
+    
+    <body align="center">
+        <div class="bgcolor">
+        <h1>Welcome To ABC Guess Number Game!</h1><br>
+        <span class="font" id="name"></span>
+        <h1>Please Guess Number From 0 between 100</h1>
+        Enter Your Guess Number:<input type ="number" name="guess" id="intext">
+        <input type="submit" value="Submit" id="submit" onclick="guess()">
+        <h2>The number of times you guesse: <span id="count"></span></h2>
+        
+        
+        <h2>Result:</h2>
+        <hr>
+        <div>
+            <span id="result"></span><br>
+            <span id="result1"></span>
+        </div>
+        </div>
+    </body>
+    <script>
+        document.getElementById("name").innerHTML=localStorage.getItem("textvalue")
+        var count = 1;
+        var answer = parseInt(Math.random()*100);
+        
+    function guess(){
+        var min = 0;
+        var max = 100;
+        var guess = document.getElementById("intext").value;
+
+            if(guess<0 || guess>100 || guess==""){
+                alert("Error");
+                result = "Invalid Number";
+                result1 = "Please Enter Number 1 ~ 100";
+            }else if(guess == answer){
+                alert("Bingo!!");
+                alert("You use "+count+" time to find the guess!! Well Done!!");
+                result = "Your guess number is "+guess;
+                result1 = "Congratulations! You Find The Number!<br><br>Below 5 time is Excellent!! Today you are so lucky!!<br>5 ~ 10 time is Good!! Please keep working hard!!<br>If you up to 10 time, Don't Give Up!!";
+            }else if(guess>answer){
+                max = guess;
+                result = "Your guess number is too high";
+                result1 = "Your guess number is "+guess;
+                
+            }else if(guess<answer){
+                min = guess;
+                result = "Your guess number is too low";
+                result1 = "Your guess number is "+guess;
+                
+        }
+        document.getElementById("count").innerHTML = count;
+        count++;
+        document.getElementById("result").innerHTML = result;
+        document.getElementById("result1").innerHTML = result1;
+    }
+    </script>
+</html>

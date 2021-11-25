@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>ABC Homepage</title>
+    </head>
+    <style>
+        body{
+            background-image: url('homepage.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .bgcolor{
+            background-color: white;
+            padding-bottom: 20px;
+        }
+        .submit{
+            background-color: black;
+            color:white;
+        }
+    </style>
+    <body align="center">
+        <div class="bgcolor">
+        <h1>Welcome To ABC Guess Number Game</h1>
+        Name:<input type="text" id="name"><br><br>
+
+        <a href="guess.html"><input class="submit" type="button" value="Submit" onclick="kdata()"></a>
+        </div>
+    </body>
+    <script>
+        function kdata(){
+            var name=document.getElementById('name').value;
+            localStorage.setItem("textvalue",name);
+            return false;
+        }
+    </script>
+</html>
